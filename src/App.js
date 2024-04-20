@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Map, { Marker } from "react-map-gl";
+import { Room } from "@mui/icons-material"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Map
+      mapboxAccessToken={process.env.REACT_APP_MAP}
+      initialViewState={{
+        longitude: 80.7718,
+        latitude: 7.8731,
+        zoom: 7,
+      }}
+      style={{ width: "100vw", height: "100vh" }}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+    >
+      <Marker longitude={79.8612} latitude={6.9271} anchor="bottom">
+        <Room />
+      </Marker>
+    </Map>
   );
 }
 
